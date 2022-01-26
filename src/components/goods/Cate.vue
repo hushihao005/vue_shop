@@ -61,6 +61,7 @@
             <el-form-item label="父级分类: ">
               <!-- options 用来指定数据源的 props用来指定配置对象 -->
               <el-cascader
+                ref="cascaderHandle"
                 expand-trigger = "hover"
                 v-model="selectedKeys"
                 :options="parentCateList"
@@ -201,6 +202,7 @@ export default {
         this.addCateForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
         // 当前分类的等级
         this.addCateForm.cat_level = this.selectedKeys.length
+        this.$refs.cascaderHandle.dropDownVisible = false
         // eslint-disable-next-line no-useless-return
         return
       } else {
@@ -209,6 +211,7 @@ export default {
         // 当前分类的等级
         this.addCateForm.cat_level = 0
       }
+      this.$refs.cascaderHandle.dropDownVisible = false
     },
     // 点击按钮添加新的分类
     addCate () {
